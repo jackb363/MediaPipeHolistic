@@ -3,8 +3,8 @@ import os
 import mediapipe as mp
 from video_edit_tools import *
 # path to dataset and file list
-root_dir = 'DATASET ROOT DIR HERE'
-root_dir_files = os.listdir(root_dir)
+root_dir = 'C:/Users/Jack/PycharmProjects/MediaPipeHolistic/words_dataset'
+root_dir_files = get_files(root_dir)
 
 mp_holistic = mp.solutions.holistic  # Holistic model
 mp_drawing = mp.solutions.drawing_utils  # Drawing utilities
