@@ -3,7 +3,7 @@ import os
 import mediapipe as mp
 from video_edit_tools import *
 # path to dataset and file list
-root_dir = 'C:/Users/Jack/Documents/MediaPipe_SmallDataset'
+root_dir = 'DATASET ROOT DIR HERE'
 root_dir_files = os.listdir(root_dir)
 
 mp_holistic = mp.solutions.holistic  # Holistic model
@@ -31,8 +31,10 @@ def edit_video_frame_num(frames_wanted):
             # iterates over each video in category
             for vid in vid_list:
                 # creates dir for .npy files
-                os.mkdir(os.path.join(root_dir, folder, str(vid_list.index(vid))))
+                #os.mkdir(os.path.join(root_dir, folder, str(vid_list.index(vid))))
+
                 # loads current vid to videocapture to check frame num
+                print('processing video', vid, 'of', folder)
                 cap = cv2.VideoCapture(os.path.join(root_dir, folder, vid))
                 vid_path = os.path.join(root_dir, folder, vid)
                 frames_length = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
@@ -44,7 +46,6 @@ def edit_video_frame_num(frames_wanted):
                 else:
                     pad_frames(vid_path, 60, npy_path)
 
-                print('category: ', folder)
                 cv2.destroyAllWindows()
 
 
